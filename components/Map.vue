@@ -34,7 +34,7 @@ export default {
     })
     this.tangramLayer = Tangram.leafletLayer({
       scene: {
-        import: '/scene.yaml',
+        import: './scene.yaml',
       },
       events: {
         click: (selection) => {
