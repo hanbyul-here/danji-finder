@@ -58,10 +58,10 @@ global:
 sources:
     danji:
         type: GeoJSON
-        url: /seoul-danji.geojson
+        url: ./seoul-danji.geojson
     gg-danji:
         type: GeoJSON
-        url: /gg-danji.geojson
+        url: ./gg-danji.geojson
 
 layers:
     seoul-danji:
