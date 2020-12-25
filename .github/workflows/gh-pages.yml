@@ -13,9 +13,8 @@ jobs:
         uses: actions/setup-node@v2.1.2
         with:
           node-version: '12.x'
-
+      - run: npm install
       - run: npm run generate
-
       - name: deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
