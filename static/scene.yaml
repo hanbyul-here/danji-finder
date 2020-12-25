@@ -1,0 +1,93 @@
+
+import:
+  - https://www.nextzen.org/carto/refill-style/11/refill-style.zip
+  - https://www.nextzen.org/carto/refill-style/themes/color-zinc.zip
+  - https://www.nextzen.org/carto/refill-style/11/themes/label-3.zip
+
+global:
+    sdk_api_key: 'hx2J5tx6QDS1Pnhu8r97JQ'
+    key_text: 'n'
+    value_text: ''
+    collide: true
+    filter: |
+        function () {
+            return global.value_text &&  String(feature[global.key_text]).toLowerCase().indexOf(global.value_text.toLowerCase()) > -1;
+        }
+    feature_order: function() { return feature.sort_rank; }
+
+    matching:
+        filter: global.filter
+        draw:
+            lines:
+                interactive: true
+                order: 1000
+                color: red
+                width: [[8, 5px], [12, 2px]]
+        points:
+            filter: { $geometry: point }
+            draw:
+                points:
+                    priority: 1
+                    interactive: true
+                    color: '#f88'
+                    size: 8px
+                    cull_from_tile: false
+                    collide: false
+                    text:
+                        collide: global.collide
+                        optional: true
+                        anchor: [bottom, top, right, left, bottom-right, bottom-left, top-right, top-left]
+                        font:
+                            size: 9pt
+                            fill: black
+        line-and-polygon-labels:
+            filter: { not: { $geometry: point } }
+            draw:
+                text:
+                    collide: global.collide
+                    optional: true
+                    anchor: [bottom, top, right, left, bottom-right, bottom-left, top-right, top-left]
+                    text_source: n
+                    priority: 200
+                    interactive: true
+                    font:
+                        stroke: { color: red, width: 2 }
+                        size: 9pt
+                        fill: white
+
+sources:
+    danji:
+        type: GeoJSON
+        url: /seoul-danji.geojson
+    gg-danji:
+        type: GeoJSON
+        url: /gg-danji.geojson
+
+layers:
+    seoul-danji:
+        data: { source: danji }
+        draw:
+            polygons:
+                interactive: true
+                color: "#333"
+                order: 10
+        matching: global.matching
+    gg-danji:
+        data: { source: gg-danji }
+        draw:
+            polygons:
+                interactive: true
+                color: "#333"
+                order: 10
+        matching: global.matching
+    # buildings:
+    #     matching: global.matching
+    #     draw:
+    #         polygons:
+    #             interactive: true
+    #     data: { source: building }
+        # draw:
+        #     polygons:
+        #         color: red
+    #     matching: global.matching
+
