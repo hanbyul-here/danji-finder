@@ -37,6 +37,9 @@ module.exports = {
     enabled: true,
     whitelistPatterns: [/leaflet/],
   },
+  router: {
+    base: process.env.DEPLOY_ENV == 'DEV' ? '' : '/danji-finder/',
+  },
   build: {
     /*
      ** Extract CSS in main chunk to separate cachaeble CSS file
