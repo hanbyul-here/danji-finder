@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="sr-only">
-      렌더링 엔진의 힘을 크게 비는 특성상, 이 지도는 스크린 리더에서 활용하기 어렵습니다. 이 지도에 활용한 데이터는
-      <a href="">해당 리포 데이터 폴더</a>
+      렌더링 엔진의 힘을 크게 비는 프로젝트의 특성상, 이 지도는 스크린 리더에서 활용하기 어렵습니다. 이 지도에 활용한 데이터는
+      <a href="https://github.com/hanbyul-here/danji-finder/blob/main/static/">해당 리포 데이터 폴더</a>
       에서 확인할 수 있습니다.
     </div>
     <label for="nameinput">찾는 이름을 입력한 후 엔터키를 누르세요.</label>
