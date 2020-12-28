@@ -41,7 +41,10 @@ global:
                             size: 9pt
                             fill: black
         line-and-polygon-labels:
-            filter: { not: { $geometry: point } }
+            filter:
+                all:
+                    - { not: { $geometry: point } }
+                    - { $zoom: { min: 14 } }
             draw:
                 text:
                     collide: global.collide
@@ -85,7 +88,7 @@ layers:
     #     draw:
     #         polygons:
     #             interactive: true
-    #     data: { source: building }
+    #    data: { source: building }
         # draw:
         #     polygons:
         #         color: red
